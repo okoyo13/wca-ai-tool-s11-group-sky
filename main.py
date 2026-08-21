@@ -59,7 +59,7 @@ def save_output(result):
     with open("output.txt", "w", encoding="utf-8") as file:
         file.write(result)
 
-    print("\nsuccessfully saved")
+    print("\nOutput saved successfully to output.txt")
 
 #ASK THE AI A QUESTION
 
