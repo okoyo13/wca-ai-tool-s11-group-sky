@@ -46,12 +46,12 @@ def save_output(result):
 #ASK THE AI A QUESTION
 
 def ask_question():
-    """Student asks a question."""
+    """Student asks a question and answer using the knowledge base."""
 
     question = input("\nStudent:").strip()
 
     if not question:
-        print("\nquestion.")
+        print("\nPlease enter a question.")
 
         return
 
