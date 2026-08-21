@@ -1,5 +1,4 @@
 from openai import OpenAI
-from dotenv import load_dotenv
 import os
 import json
 
@@ -21,14 +20,19 @@ Artificial Intelligence (AI) it is anything that mimic human intelligence by aut
 SCHOOL PROGRAM INFORMATION:
 
 1.Classes run only on Saturdays and Sundays.
-2.We have two classes per day for this course: 10:00 AM to 12:00 PM and 2:00 PM to 4:00 PM.
+2.We have two classes per day for this course.
+        -10:00 AM to 12:00 PM
+        -2:00 PM to 4:00 PM.
 3.Class duration is 2 hours per session.
 4.The class room is found in the MIB main building, second floor room 205.
 5.You teachers name is Mr. Daniel Chacha but you can call him Chacha. He is a very friendly and approachable teacher.
 6.You can reach him through his email: daniel.chacha@we-can-academy.org or personal cell: +254 796 280 700.
 7.Chapel classes are held on saturdays only from 08:00 AM to 10:00 AM.
-8.The chapel is located on the first floor, conference room where by it is mandatory for students and is part of the curriculum.
-9.For this course a students should have:a book,a pen,a laptop.
+8.The chapel is located on the first floor, conference room where by it is mandatory for all students and is part of the curriculum.
+9.For this course a students should have:
+        -a book.
+        - pen.
+        - a laptop.
 10.Chapel class duration is 2 hours per session.
 11.Each student must attend four chaplain consultation sessions during the three-month program, attendance will be recorded by scanning of the passport.
 12.For enrollment a registration/commitment fee of Kes. 1000 is required, whis includes a class passport booklet.
