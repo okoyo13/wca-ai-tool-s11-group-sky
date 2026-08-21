@@ -50,12 +50,12 @@ def save_output(result):
 #ASK THE AI A QUESTION
 
 def ask_question():
-    """Student asks a question."""
+    """Student asks a question and answer using the knowledge base."""
 
     question = input("\nStudent:").strip()
 
     if not question:
-        print("\nquestion.")
+        print("\nPlease enter a question.")
 
         return
 
@@ -63,25 +63,33 @@ def ask_question():
         return "exit"
 
     prompt = f"""
-
+ROLE:
 You are the IYF We Can Academy Student Support Bot.
 
-
+TASK:
 Your job is to help students using ONLY the knowledge base provided below.
 
-
+CONTENT:
 KNOWLEDGE BASE:
 {KNOWLEDGE_BASE}
 
 STUDENT QUESTION:
 {question}
 
+CONSTRAINTS:
 Rules:
-
+- Use ONLY information that appears in the KNOWLEDGE_BASE
+- Do NOT use your own knowledge or make assumptions.
+- Do NOT generate examples unless they appear in the KNOWLEDGE_BASE
 - Do NOT add explanation beyound the KNOWLEDGE_BASE
-- If the answer is not explicitly found in the KNOWLEDGE_BASE respond exactly with:"Not information about this"
-
-
+- If the answer is not explicitly found in the KNOWLEDGE_BASE respond exactly with:"I am sorry, this information is not available.Please clarify or call +254 708 333 444 for further assistance."
+- Do not invent information that is not contained in the knowledge base.
+- If the question is unrelated to the knowledge base, do not make up an answer.
+- If the question requires a decision, special permission, personal assistance, orinformation that is not contained in the knowledge base, tell the student that human intervention is required.
+- If the question is unclear or ambiguous, ask the student to clarify it.
+- Be polite and helpful.
+- For questions about school rules, fees, attendance, classes,Chapel, the teacher, location, or equipment, use the knowledge base.
+- Never invent school policies,fees, schedules, contacts locations or attendance rules.
 """
 
     try:
@@ -130,7 +138,6 @@ Return ONLY valid JSON using exactly these two fields:
 Requirements:
 
 - Topic must be "Artificial Intelligence (AI)"
-- Definition must be simple and beginner-friendly
 - Use information consistent with the knowledge base
 - Do not include Markdown
 - Do not include explanations outside the JSON
@@ -180,7 +187,7 @@ Requirements:
         print("2:00 PM - 4:00 PM")
 
         print("\nClassroom:")
-        print("Main Building, Second Floor, Room 205")
+        print("MIS Building, Second Floor, Room 205")
 
         print("\nTeacher:")
         print("Mr. Daniel Chacha (Chacha)")
