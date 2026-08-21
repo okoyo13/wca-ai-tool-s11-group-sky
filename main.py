@@ -3,6 +3,23 @@ from dotenv import load_dotenv
 import os
 import json
 
+def load_dotenv(path=".env"):
+    """Load simple KEY=VALUE entries without requiring python-dotenv."""
+    if not os.path.isfile(path):
+        return False
+
+    with open(path, "r", encoding="utf-8") as env_file:
+        for line in env_file:
+            line = line.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            key, value = line.split("=", 1)
+            key = key.strip()
+            value = value.strip().strip('"').strip("'")
+            if key:
+                os.environ.setdefault(key, value)
+    return True
+
 # Load API key from .env
 load_dotenv()
 
@@ -25,7 +42,7 @@ SCHOOL PROGRAM INFORMATION:
         -10:00 AM to 12:00 PM
         -2:00 PM to 4:00 PM.
 3.Class duration is 2 hours per session.
-4.The class room is found in the MIB main building, second floor room 205.
+4.The class room is found in the MIS building, second floor room 205.
 5.You teachers name is Mr. Daniel Chacha but you can call him Chacha. He is a very friendly and approachable teacher.
 6.You can reach him through his email: daniel.chacha@we-can-academy.org or personal cell: +254 796 280 700.
 7.Chapel classes are held on saturdays only from 08:00 AM to 10:00 AM.
