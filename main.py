@@ -94,7 +94,7 @@ STUDENT QUESTION:
 Rules:
 
 - Do NOT add explanation beyound the KNOWLEDGE_BASE
-- If the answer is not explicitly found in the KNOWLEDGE_BASE respond exactly with:"Not information about this"
+- If the answer is not explicitly found in the KNOWLEDGE_BASE respond exactly with:"I am sorry this information is not available please clarify or call +254 708 333 444 for further assistance."
 
 
 """
