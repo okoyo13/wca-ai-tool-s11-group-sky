@@ -59,19 +59,19 @@ def ask_question():
         return "exit"
 
     prompt = f"""
-
+ROLE:
 You are the IYF We Can Academy Student Support Bot.
 
-
+TASK:
 Your job is to help students using ONLY the knowledge base provided below.
 
-
+CONTENT:
 KNOWLEDGE BASE:
 {KNOWLEDGE_BASE}
 
 STUDENT QUESTION:
 {question}
-
+CONSTRAINTS:
 Rules:
 
 - Do NOT add explanation beyound the KNOWLEDGE_BASE
