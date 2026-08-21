@@ -71,13 +71,21 @@ KNOWLEDGE BASE:
 
 STUDENT QUESTION:
 {question}
+
 CONSTRAINTS:
 Rules:
-
+- Use ONLY information that appears in the KNOWLEDGE_BASE
+- Do NOT use your own knowledge or make assumptions.
+- Do NOT generate examples unless they appear in the KNOWLEDGE_BASE
 - Do NOT add explanation beyound the KNOWLEDGE_BASE
 - If the answer is not explicitly found in the KNOWLEDGE_BASE respond exactly with:"Not information about this"
-
-
+- Do not invent information that is not contained in the knowledge base.
+- If the question is unrelated to the knowledge base, do not make up an answer.
+- If the question requires a decision, special permission, personal assistance, orinformation that is not contained in the knowledge base, tell the student that human intervention is required.
+- If the question is unclear or ambiguous, ask the student to clarify it.
+- Be polite and helpful.
+- For questions about school rules, fees, attendance, classes,Chapel, the teacher, location, or equipment, use the knowledge base.
+- Never invent school policies,fees, schedules, contacts locations or attendance rules.
 """
 
     try:
