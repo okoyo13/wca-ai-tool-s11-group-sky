@@ -28,9 +28,9 @@ SCHOOL PROGRAM INFORMATION:
 4.The class room is found in the MIS building, second floor room 205.
 5.You teachers name is Mr. Daniel Chacha but you can call him Chacha. He is a very friendly and approachable teacher.
 6.You can reach him through his email: daniel.chacha@we-can-academy.org or personal cell: +254 796 280 700.
-7.Chapel classes are held on saturdays only from 08:00 AM to 10:00 AM.
-8.The chapel is located on the first floor, conference room where by it is mandatory for allstudents and is part of the curriculum.
-9.For this course a students should have:
+7.Chapel classes are held on Saturdays only from 08:00 AM to 10:00 AM.
+8.The chapel is located on the first floor, conference room where by it is mandatory for all students and is part of the curriculum.
+9.For this course a student should have:
         -a book.
         - pen.
         - a laptop.
@@ -38,7 +38,7 @@ SCHOOL PROGRAM INFORMATION:
 11.Each student must attend four chaplain consultation sessions during the three-month program, attendance will be recorded by scanning of the passport.
 12.For enrollment a registration/commitment fee of Kes. 1000 is required, which includes a class passport booklet.
 13.A graduation fee will be payable by all students who successfully complete the program.
-14.We only accept cash payment only were a receipt will be given to you as a proff of payment, wherebye every receipt should be kept safe until graduation.
+14.We only accept cash payment only were a receipt will be given to you as a proof of payment, whereby every receipt should be kept safe until graduation.
 15.Three absence will result in expulsion.
 16.Missed classed can be recovered by meeting your chaplain.
 17.Any attempt to scan another student's QR code to record false attendance is considered fraud and will result in immediate expulsion.
@@ -48,10 +48,10 @@ SCHOOL PROGRAM INFORMATION:
         -After Chapel class sessions.
         -After Chaplain consultation.
 19.A link we be provided to you by your class teacher that will help you track your attendance.
-20.You need to know at least one programming languange,a good laptop for this course and positive mind that is ready to learn.
+20.You need to know at least one programming language,a good laptop for this course and positive mind that is ready to learn.
 21.Head Chaplain is known as Mika and you can reach him through +254 768 653 081.
 22.Mr. Kennedy is the one in charge of the chapel class.
-23.The course take 3 month for complition.
+23.The course take 3 months for completion.
 
 """
 def save_output(result):
@@ -78,24 +78,33 @@ def ask_question():
         return "exit"
 
     prompt = f"""
-
+ROLE:
 You are the IYF We Can Academy Student Support Bot.
 
-
+TASK:
 Your job is to help students using ONLY the knowledge base provided below.
 
-
+CONTENT:
 KNOWLEDGE BASE:
 {KNOWLEDGE_BASE}
 
 STUDENT QUESTION:
 {question}
-
+CONSTRAINTS:
 Rules:
 
+- Use ONLY information that appears in the KNOWLEDGE_BASE
+- Do NOT use your own knowledge or make assumptions.
+- Do NOT generate examples unless they appear in the KNOWLEDGE_BASE
 - Do NOT add explanation beyound the KNOWLEDGE_BASE
-- If the answer is not explicitly found in the KNOWLEDGE_BASE respond exactly with:"I am sorry this information is not available please clarify or call +254 708 333 444 for further assistance."
-
+- If the answer is not explicitly found in the KNOWLEDGE_BASE respond exactly with:"I'm Sorry,this information is not available please clarify or call +254 708 333 444 for further assistance.
+- Do not invent information that is not contained in the knowledge base.
+- If the question is unrelated to the knowledge base, do not make up an answer.
+- If the question requires a decision, special permission, personal assistance, orinformation that is not contained in the knowledge base, tell the student that human intervention is required.
+- If the question is unclear or ambiguous, ask the student to clarify it.
+- Be polite and helpful.
+- For questions about school rules, fees, attendance, classes,Chapel, the teacher, location, or equipment, use the knowledge base.
+- Never invent school policies,fees, schedules, contacts locations or attendance rules.
 
 """
 
