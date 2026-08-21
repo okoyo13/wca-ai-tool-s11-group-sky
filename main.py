@@ -150,6 +150,9 @@ Requirements:
 - Do not include explanations outside the JSON
 - Do not add examples
 
+OUTPUT:
+- Give a clear and concise answer
+- Use simple English suitable for students.
 """
 
     try:
