@@ -134,7 +134,6 @@ Return ONLY valid JSON using exactly these two fields:
 Requirements:
 
 - Topic must be "Artificial Intelligence (AI)"
-- Definition must be simple and beginner-friendly
 - Use information consistent with the knowledge base
 - Do not include Markdown
 - Do not include explanations outside the JSON
