@@ -184,7 +184,7 @@ Requirements:
         print("2:00 PM - 4:00 PM")
 
         print("\nClassroom:")
-        print("Main Building, Second Floor, Room 205")
+        print("MIS Building, Second Floor, Room 205")
 
         print("\nTeacher:")
         print("Mr. Daniel Chacha (Chacha)")
