@@ -128,12 +128,12 @@ def main():
     """Start the IYF Expounder with conversation memory."""
 
     print("==========================================")
-    print("       IYF EXPOUNDER STUDENT SUPPORT BOT")
+    print("             IYF EXPOUNDER                 ")
     print("==========================================")
 
-    print("\nWelcome to AI!")
+    print("\nWelcome to AI Assistance  Chat Bot!")
 
-    print("Ask me any question about the AI.") 
+    print("Ask me any question.") 
 
     print("Type 'exit' to end the conversation.\n")
 
