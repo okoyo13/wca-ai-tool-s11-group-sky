@@ -28,3 +28,17 @@ This tool helps a student to know more about Chapel classes,the course he/she wa
 4. Click Create new secret key.
 5. Give the key  name (optional), then click Create.
 6. Copy the key and paste it the dotenv file.
+
+
+# PERSONAL REFLECTION
+
+**WeCan Academy · Season 11 · End of Module Group Project**
+
+**Name:** Dennis Mwaniki  
+**Admission Number:** 1222  
+**Group:** SKY GROUP DEVELOPERS  
+**Tool:** IYF Expounder  
+
+## Reflection
+
+My main work on the IYF Expounder project was fixing errors and improving the knowledge base. I added try/except blocks so the program does not crash when API calls fail, when input is empty, or when JSON is invalid. I also made the knowledge base clearer and more accurate about class times, chapel rules, passport scanning, and fees. I made regular commits to our GitHub repository. From this work, I learned that good error handling is important for a reliable tool. Careful knowledge-base writing keeps the AI answers trustworthy for students. I also improved my skills in Python exception handling and team work with Git.
