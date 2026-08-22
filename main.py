@@ -99,6 +99,8 @@ SCHOOL PROGRAM INFORMATION:
 22. Mr. Kennedy is in charge of the chapel class.
 
 23. The course takes 3 months to complete.
+
+24.Indecent dressing code is not allowed.
 """
 
 
