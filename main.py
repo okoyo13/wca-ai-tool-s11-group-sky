@@ -131,7 +131,7 @@ def main():
     print("             IYF EXPOUNDER                 ")
     print("==========================================")
 
-    print("\nWelcome to AI Assistance  Chat Bot!")
+    print("\nWelcome to AI Assistance Chat Bot!")
 
     print("Ask me any question.") 
 
