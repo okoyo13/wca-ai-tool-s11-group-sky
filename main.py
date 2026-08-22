@@ -25,7 +25,7 @@ SCHOOL PROGRAM INFORMATION:
         -10:00 AM to 12:00 PM.
         - 2:00 PM to 4:00 PM.
 3.Class duration is 2 hours per session.
-4.The class room is found in the MIB main building, second floor room 205.
+4.The class room is found in the MIS building, second floor room 205.
 5.You teachers name is Mr. Daniel Chacha but you can call him Chacha. He is a very friendly and approachable teacher.
 6.You can reach him through his email: daniel.chacha@we-can-academy.org or personal cell: +254 796 280 700.
 7.Chapel classes are held on saturdays only from 08:00 AM to 10:00 AM.
@@ -67,29 +67,24 @@ def save_output(result):
 def ask_question():
     """Allow the student to have a continuous conversation."""
     print("\n=====STUDENT SUPPORT=====")
-    print("You can ask multiple questions.")
-    print("Type 'exit' to return to the main menu.\n")
+    print("Welcome to AI course")
+    print("Type 'exit' to end the convenversation.\n")
 
     while True:
-
 
         question = input("Student:").strip()
 
     #Exit the conversation and return to the main menu
 
         if question.lower() == "exit":
-            print("\nThank you for using IYF Expounder!")
-            print("GoodLuck!")
-    
-
-            return
+            return "exit"
         #Check for empty input 
     
         if not question:
-            print("\nPlease enter a question.\n")
+            print("\nPlease Enter a Question.\n")
             continue
 
-    prompt = f"""
+        prompt = f"""
 ROLE:
 You are the IYF We Can Academy Student Support Bot.
 
@@ -123,25 +118,27 @@ OUTPUT:
 - Use simple English suitable for students.
 """
 
-    try:
-        response = client.responses.create(
-            model="gpt-5.4-mini",
-            input=prompt
-        )
+        try:
+            print("\nThinking...")
 
-        result = response.output_text
+            response = client.responses.create(
+                model="gpt-5.4-mini",
+                input=prompt
+            )
 
-        print("\n===== ANSWER =====")
-        print(result)
+            result = response.output_text
 
-        save_output(result)
+            print("\n===== ANSWER =====")
+            print(result)
 
-        print()
+            save_output(result)
 
-    except Exception as error:
-        print("\nAn error occurred while contacting OpenAI.")
-        print(error)
-        print("Please try again.\n")
+            print()
+
+        except Exception as error:
+            print("\n=====ERRROR=====")
+            print("The bot could not generate a response.")
+            print(error)
 
 
 #ARTIFICIAL INTELLIGENCE EXPLANATION
@@ -219,7 +216,7 @@ Requirements:
         print("2:00 PM - 4:00 PM")
 
         print("\nClassroom:")
-        print("Main Building, Second Floor, Room 205")
+        print("MIS Building, Second Floor, Room 205")
 
         print("\nTeacher:")
         print("Mr. Daniel Chacha (Chacha)")
@@ -259,7 +256,6 @@ def main():
             artificial_intelligence_json()
 
         elif choice == "2":
-
             result = ask_question()
 
             if result == "exit":

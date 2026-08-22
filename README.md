@@ -20,12 +20,12 @@ This tool helps a student to know more about Chapel classes,the course he/she wa
 
 1. Install the required packages
 2. Create an.env file.
-3. Add your Gemini API key
+3. Add your OpenAi API key
 4. Run main.py
 
 ## How to set an API key
 
-1. Go to the Google AI Studio Platform
+1. Go to the OpenAi Platform
 2. Create account.
 3. Navigate to the API keys page
 4. Click Create new secret key.
