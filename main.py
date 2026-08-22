@@ -3,23 +3,6 @@ from dotenv import load_dotenv
 import os
 import json
 
-def load_dotenv(path=".env"):
-    """Load simple KEY=VALUE entries without requiring python-dotenv."""
-    if not os.path.isfile(path):
-        return False
-
-    with open(path, "r", encoding="utf-8") as env_file:
-        for line in env_file:
-            line = line.strip()
-            if not line or line.startswith("#") or "=" not in line:
-                continue
-            key, value = line.split("=", 1)
-            key = key.strip()
-            value = value.strip().strip('"').strip("'")
-            if key:
-                os.environ.setdefault(key, value)
-    return True
-
 # Load API key from .env
 load_dotenv()
 
@@ -38,25 +21,24 @@ Artificial Intelligence (AI) it is anything that mimic human intelligence by aut
 SCHOOL PROGRAM INFORMATION:
 
 1.Classes run only on Saturdays and Sundays.
-2.We have two classes per day for this course.
-        -10:00 AM to 12:00 PM
-        -2:00 PM to 4:00 PM.
+2.We have two classes per day for this course: 
+        -10:00 AM to 12:00 PM.
+        - 2:00 PM to 4:00 PM.
 3.Class duration is 2 hours per session.
-4.The class room is found in the MIS building, second floor room 205.
+4.The class room is found in the MIB main building, second floor room 205.
 5.You teachers name is Mr. Daniel Chacha but you can call him Chacha. He is a very friendly and approachable teacher.
 6.You can reach him through his email: daniel.chacha@we-can-academy.org or personal cell: +254 796 280 700.
-7.Chapel classes are held on Saturdays only from 08:00 AM to 10:00 AM
-   and 12.00 PM to 2.00 PM for the second session.
-8.The chapel is located on the first floor, conference room where by it is mandatory for all students and is part of the curriculum.
-9.For this course a student should have:
+7.Chapel classes are held on saturdays only from 08:00 AM to 10:00 AM.
+8.The chapel is located on the first floor, conference room where by it is mandatory for students and is part of the curriculum.
+9.For this course a students should have:
         -a book.
-        - pen.
-        - a laptop.
+        -a pen.
+        -a laptop.
 10.Chapel class duration is 2 hours per session.
 11.Each student must attend four chaplain consultation sessions during the three-month program, attendance will be recorded by scanning of the passport.
-12.For enrollment a registration/commitment fee of Kes. 1000 is required, which includes a class passport booklet.
+12.For enrollment a registration/commitment fee of Kes. 1000 is required, whis includes a class passport booklet.
 13.A graduation fee will be payable by all students who successfully complete the program.
-14.We only accept cash payment only were a receipt will be given to you as a proof of payment, whereby every receipt should be kept safe until graduation.
+14.We only accept cash payment only were a receipt will be given to you as a proff of payment, wherebye every receipt should be kept safe until graduation.
 15.Three absence will result in expulsion.
 16.Missed classed can be recovered by meeting your chaplain.
 17.Any attempt to scan another student's QR code to record false attendance is considered fraud and will result in immediate expulsion.
@@ -66,10 +48,10 @@ SCHOOL PROGRAM INFORMATION:
         -After Chapel class sessions.
         -After Chaplain consultation.
 19.A link we be provided to you by your class teacher that will help you track your attendance.
-20.You need to know at least one programming language,a good laptop for this course and positive mind that is ready to learn.
+20.You need to know at least one programming languange,a good laptop for this course and positive mind that is ready to learn.
 21.Head Chaplain is known as Mika and you can reach him through +254 768 653 081.
 22.Mr. Kennedy is the one in charge of the chapel class.
-23.The course take 3 months for completion.
+23.The course take 3 month for complition.
 
 """
 def save_output(result):
@@ -83,17 +65,29 @@ def save_output(result):
 #ASK THE AI A QUESTION
 
 def ask_question():
-    """Student asks a question."""
+    """Allow the student to have a continuous conversation."""
+    print("\n=====STUDENT SUPPORT=====")
+    print("You can ask multiple questions.")
+    print("Type 'exit' to return to the main menu.\n")
 
-    question = input("\nStudent:").strip()
+    while True:
 
-    if not question:
-        print("\nquestion.")
 
-        return
+        question = input("Student:").strip()
 
-    if question.lower() =="exit":
-        return "exit"
+    #Exit the conversation and return to the main menu
+
+        if question.lower() == "exit":
+            print("\nThank you for using IYF Expounder!")
+            print("GoodLuck!")
+    
+
+            return
+        #Check for empty input 
+    
+        if not question:
+            print("\nPlease enter a question.\n")
+            continue
 
     prompt = f"""
 ROLE:
@@ -108,9 +102,9 @@ KNOWLEDGE BASE:
 
 STUDENT QUESTION:
 {question}
+
 CONSTRAINTS:
 Rules:
-
 - Use ONLY information that appears in the KNOWLEDGE_BASE
 - Do NOT use your own knowledge or make assumptions.
 - Do NOT generate examples unless they appear in the KNOWLEDGE_BASE
@@ -124,6 +118,9 @@ Rules:
 - For questions about school rules, fees, attendance, classes,Chapel, the teacher, location, or equipment, use the knowledge base.
 - Never invent school policies,fees, schedules, contacts locations or attendance rules.
 
+OUTPUT:
+- Give a clear and concise answer
+- Use simple English suitable for students.
 """
 
     try:
@@ -139,12 +136,12 @@ Rules:
 
         save_output(result)
 
-        return result
+        print()
 
     except Exception as error:
         print("\nAn error occurred while contacting OpenAI.")
         print(error)
-        return None
+        print("Please try again.\n")
 
 
 #ARTIFICIAL INTELLIGENCE EXPLANATION
@@ -178,9 +175,6 @@ Requirements:
 - Do not include explanations outside the JSON
 - Do not add examples
 
-OUTPUT:
-- Give a clear and concise answer
-- Use simple English suitable for students.
 """
 
     try:
@@ -256,7 +250,7 @@ def main():
         print("\n===== MENU =====")
         print("1. What is Artificial Intelligence (AI)?")
         print("2. Ask a Student Support Question")
-        print("3. Exit")
+        
 
         choice = input("\nChoose an option: ").strip()
 
@@ -270,20 +264,15 @@ def main():
 
             if result == "exit":
                 print("\nThank you for using IYF Expounder!")
+                print("GoodLuck!")
                 break
 
-
-        elif choice == "3":
-
-            print("\nThank you for using IYF Expounder!")
-            print("GoodLuck!")
-            break
 
         else:
 
             print("\nInvalid choice.")
-            print("Please choose 1, 2, or 3.")
+            print("Please choose 1, or 2.")
 
 #START PROGRAM
 if __name__ == "__main__":
-    main()
+    main()  
