@@ -3,287 +3,253 @@ from dotenv import load_dotenv
 import os
 import json
 
-def load_dotenv(path=".env"):
-    """Load simple KEY=VALUE entries without requiring python-dotenv."""
-    if not os.path.isfile(path):
-        return False
-
-    with open(path, "r", encoding="utf-8") as env_file:
-        for line in env_file:
-            line = line.strip()
-            if not line or line.startswith("#") or "=" not in line:
-                continue
-            key, value = line.split("=", 1)
-            key = key.strip()
-            value = value.strip().strip('"').strip("'")
-            if key:
-                os.environ.setdefault(key, value)
-    return True
-
 # Load API key from .env
 load_dotenv()
 
 client = OpenAI(api_key=os.getenv("OpenAI_API_KEY"))
 
-# Knowledge base for AI Learning.
 
-KNOWLEDGE_BASE ="""
+
+# KNOWLEDGE BASE
+
+KNOWLEDGE_BASE = """
 IYF We Can Academy student knowledge base
 
-Artificial Intelligence(AI):
+ARTIFICIAL INTELLIGENCE (AI):
 
-Artificial Intelligence (AI) it is anything that mimic human intelligence by automating human task.
+Artificial Intelligence (AI) is anything that mimics human
+intelligence by automating human tasks.
 
 
 SCHOOL PROGRAM INFORMATION:
 
-1.Classes run only on Saturdays and Sundays.
-2.We have two classes per day for this course.
-        -10:00 AM to 12:00 PM
-        -2:00 PM to 4:00 PM.
-3.Class duration is 2 hours per session.
-4.The class room is found in the MIS building, second floor room 205.
-5.You teachers name is Mr. Daniel Chacha but you can call him Chacha. He is a very friendly and approachable teacher.
-6.You can reach him through his email: daniel.chacha@we-can-academy.org or personal cell: +254 796 280 700.
-7.Chapel classes are held on Saturdays only from 08:00 AM to 10:00 AM
-   and 12.00 PM to 2.00 PM for the second session.
-8.The chapel is located on the first floor, conference room where by it is mandatory for all students and is part of the curriculum.
-9.For this course a student should have:
-        -a book.
-        - pen.
-        - a laptop.
-10.Chapel class duration is 2 hours per session.
-11.Each student must attend four chaplain consultation sessions during the three-month program, attendance will be recorded by scanning of the passport.
-12.For enrollment a registration/commitment fee of Kes. 1000 is required, which includes a class passport booklet.
-13.A graduation fee will be payable by all students who successfully complete the program.
-14.We only accept cash payment only were a receipt will be given to you as a proof of payment, whereby every receipt should be kept safe until graduation.
-15.Three absence will result in expulsion.
-16.Missed classed can be recovered by meeting your chaplain.
-17.Any attempt to scan another student's QR code to record false attendance is considered fraud and will result in immediate expulsion.
-18.You need to scan your passport:
-        -At the entrance.
-        -After every class.
-        -After Chapel class sessions.
-        -After Chaplain consultation.
-19.A link we be provided to you by your class teacher that will help you track your attendance.
-20.You need to know at least one programming language,a good laptop for this course and positive mind that is ready to learn.
-21.Head Chaplain is known as Mika and you can reach him through +254 768 653 081.
-22.Mr. Kennedy is the one in charge of the chapel class.
-23.The course take 3 months for completion.
+1. Classes run only on Saturdays and Sundays.
 
+2. We have two classes per day for this course:
+   - 10:00 AM to 12:00 PM
+   - 2:00 PM to 4:00 PM
+
+3. Class duration is 2 hours per session.
+
+4. The classroom is found in the MIS building,
+   second floor, room 205.
+
+5. The teacher's name is Mr. Daniel Chacha,
+   but you can call him Chacha. He is a very friendly
+   and approachable teacher.
+
+6. You can reach him through:
+   Email: daniel.chacha@we-can-academy.org
+   Cell: +254 796 280 700
+
+7. Chapel classes are held on Saturdays ONLY
+    -08:00 AM to 10:00 AM.
+    -12:00 PM to 2:00 PM.
+
+
+8. The chapel is located on the first floor,
+   conference room. It is mandatory for students
+   and is part of the curriculum.
+
+9. For this course, students should have:
+   - A book
+   - A pen
+   - A laptop
+
+10. Chapel class duration is 2 hours per session.
+
+11. Each student must attend four chaplain consultation
+    sessions during the three-month program. Attendance
+    will be recorded by scanning the passport.
+
+12. For enrollment, a registration/commitment fee of
+    KES 1,000 is required, which includes a class passport booklet.
+
+13. A graduation fee will be payable by all students
+    who successfully complete the program.
+
+14. We only accept cash payment. A receipt will be given
+    as proof of payment. Every receipt should be kept safe
+    until graduation.
+
+15. Three absences will result in expulsion.
+
+16. Missed classes can be recovered by meeting your chaplain.
+
+17. Any attempt to scan another student's QR code to record
+    false attendance is considered fraud and will result
+    in immediate expulsion.
+
+18. You need to scan your passport:
+    - At the entrance
+    - After every class
+    - After Chapel class sessions
+    - After Chaplain consultation
+
+19. A link will be provided to you by your class teacher
+    that will help you track your attendance.
+
+20. You need to know at least one programming language,
+    have a good laptop for this course, and have a positive
+    mind that is ready to learn.
+
+21. The Head Chaplain is known as Mika.
+    Contact: +254 768 653 081
+
+22. Mr. Kennedy is in charge of the chapel class.
+
+23. The course takes 3 months to complete.
+
+24.Indecent dressing code is not allowed.
 """
+
+
+
+# SAVE OUTPUT
+
+
 def save_output(result):
-    """Save the AI response to output.txt."""
-
-    with open("output.txt", "w", encoding="utf-8") as file:
-        file.write(result)
-
-    print("\nOutput saved successfully to output.txt")
-
-#ASK THE AI A QUESTION
-
-def ask_question():
-    """Student asks a question."""
-
-    question = input("\nStudent:").strip()
-
-    if not question:
-        print("\nquestion.")
-
-        return
-
-    if question.lower() =="exit":
-        return "exit"
-
-    prompt = f"""
-ROLE:
-You are the IYF We Can Academy Student Support Bot.
-
-TASK:
-Your job is to help students using ONLY the knowledge base provided below.
-
-CONTENT:
-KNOWLEDGE BASE:
-{KNOWLEDGE_BASE}
-
-STUDENT QUESTION:
-{question}
-CONSTRAINTS:
-Rules:
-
-- Use ONLY information that appears in the KNOWLEDGE_BASE
-- Do NOT use your own knowledge or make assumptions.
-- Do NOT generate examples unless they appear in the KNOWLEDGE_BASE
-- Do NOT add explanation beyound the KNOWLEDGE_BASE
-- If the answer is not explicitly found in the KNOWLEDGE_BASE respond exactly with:"I'm Sorry,this information is not available please clarify or call +254 708 333 444 for further assistance.
-- Do not invent information that is not contained in the knowledge base.
-- If the question is unrelated to the knowledge base, do not make up an answer.
-- If the question requires a decision, special permission, personal assistance, orinformation that is not contained in the knowledge base, tell the student that human intervention is required.
-- If the question is unclear or ambiguous, ask the student to clarify it.
-- Be polite and helpful.
-- For questions about school rules, fees, attendance, classes,Chapel, the teacher, location, or equipment, use the knowledge base.
-- Never invent school policies,fees, schedules, contacts locations or attendance rules.
-
-"""
+    """Save the latest AI response to output.txt."""
 
     try:
-        response = client.responses.create(
-            model="gpt-5.4-mini",
-            input=prompt
-        )
+        with open("output.txt", "w", encoding="utf-8") as file:
+            file.write(result)
 
-        result = response.output_text
-
-        print("\n===== ANSWER =====")
-        print(result)
-
-        save_output(result)
-
-        return result
+        print("\nOutput saved successfully to output.txt")
 
     except Exception as error:
-        print("\nAn error occurred while contacting OpenAI.")
-        print(error)
-        return None
-
-
-#ARTIFICIAL INTELLIGENCE EXPLANATION
-
-def artificial_intelligence_json():
-    """Explain AI and return the response in JSON format."""
-
-    prompt = f"""
-You are an AI learning tutor at IYF We Can Academy.
-
-Use the following knowledge base:
-
-{KNOWLEDGE_BASE}
-
-Using ONLY the exact information from the knowledge base:
-
-Return ONLY valid JSON using exactly these two fields:
-
-{{
-    "topic": "...",
-    "definition": "...",
-
-}}
-
-Requirements:
-
-- Topic must be "Artificial Intelligence (AI)"
-- Definition must be simple and beginner-friendly
-- Use information consistent with the knowledge base
-- Do not include Markdown
-- Do not include explanations outside the JSON
-- Do not add examples
-
-OUTPUT:
-- Give a clear and concise answer
-- Use simple English suitable for students.
-"""
-
-    try:
-        response = client.responses.create(
-            model="gpt-5.4-mini",
-            input=prompt
-        )
-
-        result = response.output_text
-
-        # Parse JSON
-        data = json.loads(result)
-
-        print("\n===== ARTIFICIAL INTELLIGENCE =====")
-
-        print("\nTopic:")
-        print(data["topic"])
-
-        print("\nDefinition:")
-        print(data["definition"])
-
-    
-        # Save formatted JSON
-        save_output(json.dumps(data, indent=3))
-
-    except json.JSONDecodeError:
-        print("\nThe AI returned an invalid JSON response.")
-        print("Raw response:")
-        print(result)
-
-    except Exception as error:
-        print("\nAn error occurred while explaining AI.")
+        print("\nCould not save output.")
         print(error)
 
-        print("\n===== IYF WE CAN ACADEMY INFORMATION =====")
-
-        print("\nClass Days:")
-        print("Saturday and Sunday")
-
-        print("\nClass Times:")
-        print("10:00 AM - 12:00 PM")
-        print("2:00 PM - 4:00 PM")
-
-        print("\nClassroom:")
-        print("Main Building, Second Floor, Room 205")
-
-        print("\nTeacher:")
-        print("Mr. Daniel Chacha (Chacha)")
-
-        print("\nChapel:")
-        print("Saturday, 8:00 AM - 10:00 AM")
-        print("First Floor, Conference Room")
-
-        print("\nEnrollment Fee:")
-        print("KES 1,000")
-
-        print("\nRequired Equipment:")
-        print("Book, pen, and laptop")
 
 
-#MAIN MENU
+# MAIN CHATBOT
+
 
 def main():
+    """Start the IYF Expounder with conversation memory."""
 
-       print("==========================================")
-       print("       IYF EXPOUNDER STUDENT BOT")
-       print("==========================================")
+    print("==========================================")
+    print("             IYF EXPOUNDER                 ")
+    print("==========================================")
 
-       print("\nWelcome to the IYF We Can Academy Support Bot!")
+    print("\nWelcome to AI Assistance Chat Bot!")
 
-       while True:
+    print("Ask me any question.") 
 
-        print("\n===== MENU =====")
-        print("1. What is Artificial Intelligence (AI)?")
-        print("2. Ask a Student Support Question")
-        print("3. Exit")
+    print("Type 'exit' to end the conversation.\n")
 
-        choice = input("\nChoose an option: ").strip()
+    # Stores previous questions and answers
+    conversation_history = []
 
-        if choice == "1":
+    while True:
 
-            artificial_intelligence_json()
+        student_question = input("Student: ").strip()
 
-        elif choice == "2":
-
-            result = ask_question()
-
-            if result == "exit":
-                print("\nThank you for using IYF Expounder!")
-                break
-
-
-        elif choice == "3":
-
+        # Exit chatbot
+        if student_question.lower() == "exit":
             print("\nThank you for using IYF Expounder!")
             print("GoodLuck!")
             break
 
-        else:
+        # Empty question
+        if not student_question:
+            print("\nPlease enter a question.\n")
+            continue
 
-            print("\nInvalid choice.")
-            print("Please choose 1, 2, or 3.")
+ 
+        # RTCCO PROMPT
+     
 
-#START PROGRAM
+        prompt = f"""
+ROLE:
+You are the IYF We Can Academy Student Support Bot.
+
+TASK:
+Answer the student's current question using ONLY the
+information contained in the knowledge base.
+
+CONTEXT:
+
+KNOWLEDGE BASE:
+{KNOWLEDGE_BASE}
+
+PREVIOUS CONVERSATION:
+{conversation_history}
+
+CURRENT STUDENT QUESTION:
+{student_question}
+
+CONSTRAINTS:
+- Use ONLY information contained in the knowledge base.
+- Do NOT use outside knowledge.
+- Do NOT invent information.
+- Do NOT make assumptions.
+- Do NOT create examples unless they are explicitly
+  contained in the knowledge base.
+- Do NOT add information that is not contained in the
+  knowledge base.
+- Use the previous conversation only to understand
+  follow-up questions.
+- If the requested information is not contained in the
+  knowledge base, clearly state that the information
+  is not available and human intervention is required.
+- If the question is unclear or ambiguous, ask the
+  student to clarify.
+- Do not invent school policies, fees, schedules,
+  contacts, locations, or attendance rules.
+- Use simple English.
+- Be polite and helpful.
+
+OUTPUT:
+- Answer the student's current question.
+- Use previous conversation when necessary.
+- Give a clear and concise answer.
+- Do not include unrelated information.
+"""
+
+        try:
+
+            print("\nBot is thinking...")
+
+            # OpenAI Responses API
+            response = client.responses.create(
+                model="gpt-5.4-mini",
+                input=prompt
+            )
+
+            # Get the AI response
+            result = response.output_text
+
+            # Display response
+            print("\n===== BOT =====")
+            print(result)
+
+            # Save conversation
+            conversation_history.append({
+                "role": "user",
+                "content": student_question
+            })
+
+            conversation_history.append({
+                "role": "assistant",
+                "content": result
+            })
+
+            # Save latest answer to output.txt
+            save_output(result)
+
+            print()
+
+        except Exception as error:
+
+            print("\n===== ERROR =====")
+            print("The bot could not generate a response.")
+            print(error)
+            print()
+
+
+# START PROGRAM
+
 if __name__ == "__main__":
     main()

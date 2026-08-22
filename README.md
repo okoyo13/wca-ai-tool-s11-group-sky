@@ -3,6 +3,9 @@
 ## Members
 
 *Rodricks Okoyo - 3892*
+Personal Reflection
+
+Working on the IYF Expounder project has helped me improve my understanding of Python programming, GitHub, and the integration of AI into real-world applications. I learned how to create a knowledge base, design effective prompts using the RTCCO framework, connect a Python program to the OpenAI API, handle user input, and save generated responses. I also gained practical experience working with Git and GitHub by making commits, pushing changes, and collaborating with other group members. Although I faced challenges such as debugging code, handling API errors, and understanding how different parts of the program work together, these challenges improved my problem-solving and debugging skills. Overall, the project has increased my confidence in programming and shown me how AI can be responsibly used to develop useful educational tools.
 *Denis Mwaniki - 1222*
 *Ruth Kamau - 0044*
 *Gladys Chege - 3649*
@@ -17,14 +20,15 @@ This tool helps a student to know more about Chapel classes,the course he/she wa
 
 1. Install the required packages
 2. Create an.env file.
-3. Add your Gemini API key
+3. Add your OpenAi API key
 4. Run main.py
 
 ## How to set an API key
 
-1. Go to the Google AI Studio Platform
+1. Go to the OpenAi platform
 2. Create account.
 3. Navigate to the API keys page
 4. Click Create new secret key.
 5. Give the key  name (optional), then click Create.
 6. Copy the key and paste it the dotenv file.
+
